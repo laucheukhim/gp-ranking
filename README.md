@@ -1,24 +1,33 @@
-# gp-ranking
+# GP Ranking
 
-## Project setup
+https://laucheukhim.github.io/gp-ranking/
+
+## Data source
+
+- https://www.gp-patient.co.uk/surveysandreports
+- https://www.getthedata.com/open-postcode-geo-api
+
+## Development
+
+### Install
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Process data
+
+Download "GP Practice" -> "Practice data (weighted) (.csv)" from https://www.gp-patient.co.uk/surveysandreports. Place it in `/data/practices.csv`. Then run:
+
+```
+npm run practices:init
+```
+
+### Run in local
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Build for production
 ```
 npm run build
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
