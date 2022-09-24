@@ -1,0 +1,8 @@
+{
+  "postcode": "Postcode",
+  "distance": "Distance (km)",
+  "search": "Search",
+  "invalidPostcode": "Invalid postcode",
+  "insideCatchmentArea": "Inside catchment area",
+  "outsideCatchmentArea": "Outside catchment area"
+}
