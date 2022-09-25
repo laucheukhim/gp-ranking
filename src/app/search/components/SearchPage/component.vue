@@ -1,21 +1,21 @@
 <template>
   <v-container>
     <v-row>
-      <v-col cols="8">
+      <v-col lg="8" sm="6">
         <v-text-field
           v-model="postcode"
           :label="$t('postcode')"
           :rules="postcodeRules"
         />
       </v-col>
-      <v-col cols="2">
+      <v-col lg="2" sm="3">
         <v-text-field
           v-model="distance"
           :label="$t('distance')"
           type="number"
         />
       </v-col>
-      <v-col cols="2" class="d-flex">
+      <v-col lg="2" sm="3" class="d-flex">
         <v-btn
           :loading="loading"
           class="search-button align-self-center"

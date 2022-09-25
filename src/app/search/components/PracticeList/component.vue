@@ -3,21 +3,40 @@
     <v-list-item
       v-for="(practice, i) in practices"
       :key="i"
-      :href="`https://www.gp-patient.co.uk/patientexperiences?practicecode=${practice.practiceCode}`"
+      :href="nhsURL(practice)"
       target="_blank"
     >
       <v-list-item-action>
         <v-chip
-          :color="`hsl(${(practice.score * 120).toString(10)},90%,70%)`"
-          >{{ `${(practice.score * 100).toFixed(2)}%` }}</v-chip
+          :color="color(practice)"
+          :href="surveyURL(practice)"
+          target="_blank"
+          >{{ score(practice) }}</v-chip
         >
       </v-list-item-action>
       <v-list-item-content>
-        <v-list-item-title>{{ practice.practiceName }}</v-list-item-title>
-        <v-list-item-subtitle>{{
-          `${(practice.distance / 1000).toFixed(2)} km`
-        }}</v-list-item-subtitle>
+        <v-list-item-title>{{ title(practice) }}</v-list-item-title>
+        <v-list-item-subtitle>{{ subtitle(practice) }}</v-list-item-subtitle>
       </v-list-item-content>
+      <v-list-item-action>
+        <v-menu offset-y left>
+          <template #activator="{ on, attrs }">
+            <v-btn icon v-bind="attrs" v-on="on" @click.prevent>
+              <v-icon>mdi-dots-vertical</v-icon>
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item :href="catchmentURL(practice)" target="_blank">
+              <v-list-item-action>
+                <v-icon>mdi-map</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>{{ $t('catchment') }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </v-list-item-action>
     </v-list-item>
   </v-list>
 </template>

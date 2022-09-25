@@ -57,15 +57,9 @@ export default {
             const { latitude, longitude } = result.data;
             practices.forEach(practice => {
               const { distance, catchment } = checkBoundary(
-                {
-                  geoJsonFeature: practice.geoJsonFeature,
-                  latitude: practice.latitude,
-                  longitude: practice.longitude,
-                },
-                {
-                  latitude,
-                  longitude,
-                },
+                practice.geoJsonFeature,
+                latitude,
+                longitude,
               );
               practice.distance = distance;
               practice.catchment = catchment;

@@ -8,17 +8,15 @@ export async function checkPostcode(postcode) {
   return await response.json();
 }
 
-export function checkBoundary(boundary, target) {
-  const layer = L.geoJSON(boundary.geoJsonFeature);
+export function checkBoundary(geoJsonFeature, latitude, longitude) {
+  const layer = L.geoJSON(geoJsonFeature);
+  const { OrgLatitude, OrgLongitude } = geoJsonFeature.features[0].properties;
   const from =
-    boundary.latitude && boundary.longitude
-      ? L.latLng(boundary.latitude, boundary.longitude)
+    typeof OrgLatitude !== 'undefined' && typeof OrgLongitude !== 'undefined'
+      ? L.latLng(OrgLatitude, OrgLongitude)
       : layer.getBounds().getCenter();
-  const to = L.latLng(target.latitude, target.longitude);
-  const results = leafletPip.pointInLayer(
-    [target.longitude, target.latitude],
-    layer,
-  );
+  const to = L.latLng(latitude, longitude);
+  const results = leafletPip.pointInLayer([longitude, latitude], layer);
   return {
     distance: from.distanceTo(to),
     catchment: !(results === undefined || results.length === 0),
