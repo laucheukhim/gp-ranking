@@ -10,7 +10,7 @@ export async function checkPostcode(postcode) {
 
 export function checkBoundary(geoJsonFeature, latitude, longitude) {
   const layer = L.geoJSON(geoJsonFeature);
-  const { OrgLatitude, OrgLongitude } = geoJsonFeature.features[0].properties;
+  const { OrgLatitude, OrgLongitude } = geoJsonFeature[0].properties;
   const from =
     typeof OrgLatitude !== 'undefined' && typeof OrgLongitude !== 'undefined'
       ? L.latLng(OrgLatitude, OrgLongitude)
