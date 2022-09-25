@@ -12,7 +12,7 @@ export function checkBoundary(geoJsonFeature, latitude, longitude) {
   const layer = L.geoJSON(geoJsonFeature);
   const { OrgLatitude, OrgLongitude } = geoJsonFeature[0].properties;
   const from =
-    typeof OrgLatitude !== 'undefined' && typeof OrgLongitude !== 'undefined'
+    OrgLatitude && OrgLongitude
       ? L.latLng(OrgLatitude, OrgLongitude)
       : layer.getBounds().getCenter();
   const to = L.latLng(latitude, longitude);
